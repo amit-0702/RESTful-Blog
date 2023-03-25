@@ -1,0 +1,47 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends 'bootstrap/base.html' %}
+
+{% block content %}
+{% include "header.html" %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/edit-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>{{ heading }}</h1>
+            <span class="subheading">You're going to make a great blog post!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+          <!-- This is where the form will go -->
+<!--        <form method="POST" class="col-lg-">-->
+<!--          <h3>Blog Post Title</h3>-->
+<!--            {{form.title}}-->
+<!--          <h3>Subtitle</h3>-->
+<!--            {{form.subtitle}}-->
+<!--          <h3>Your Name</h3>-->
+<!--            {{form.author}}-->
+<!--          <h3>Blog Image URL</h3>-->
+<!--            {{form.img_url}}-->
+<!--          <h3>Blog Content</h3>-->
+<!--            {{form.body}}-->
+<!--            {{form.submit}}-->
+          {{ ckeditor.load() }}
+<!--          {{ ckeditor.config(name='body') }}-->
+          {{ wtf.quick_form(form, novalidate=True, button_map={'submit':'btn btn-primary'}) }}
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% include "footer.html" %}
+{% endblock %}
